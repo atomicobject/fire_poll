@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Matt Fletcher"]
   s.email       = ["fletcher@atomicobject.com"]
   s.homepage    = ""
-  s.summary     = %q{Simple, brute-force method for knowing when something is ready.}
-  s.description = %q{Simple, brute-force method for knowing when something is ready.}
+  s.summary     = %q{Simple, brute-force method for knowing when something is ready}
+  s.description = %q{Simple, brute-force method for knowing when something is ready}
 
   s.rubyforge_project = "fire_poll"
 
