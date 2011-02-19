@@ -1,10 +1,10 @@
 Description
 ===========
-`FirePoll.poll` is possibly the most brain-dead way of knowing when something is ready. That said, it's also the smallest and simplest I've encountered.
+`FirePoll.poll` is a brain-dead way of knowing when something is ready.
 
 Usage
 =====
-Pass a block to `FirePoll.poll`. Return `true` when whatever you need is ready. Return `false` when it isn't. `poll` will raise an exception after too many failed attempts.
+Pass a block to `FirePoll.poll`. Return `true` when your need is met. Return `false` when it isn't. `poll` will raise an exception after too many failed attempts.
 
 The `poll` method takes two optional parameters: a specific message to raise on failure and the number of seconds to wait. By default, `poll` will try for two seconds. `poll` runs every tenth of a second.
     FirePoll.poll { false } # raises an error after two seconds
@@ -12,7 +12,7 @@ The `poll` method takes two optional parameters: a specific message to raise on 
     FirePoll.poll("waited for too long!", 7) { false } # raises an error after seven seconds with a specific error message
     FirePoll.poll(nil, 88) { false } # raises an error after eighty-eight seconds with the generic error message
 
-The `FirePoll` module may be mixed into your class; this makes it a little faster to type `poll`.
+The `FirePoll` module may be mixed into your class; this makes it a little faster to type the method name.
     class TestHelper
       include FirePoll
       def helper_method
