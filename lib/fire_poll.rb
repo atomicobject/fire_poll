@@ -1,4 +1,4 @@
-# @see x README.md for instruction on how to use this library
+# see the {file:README.md README file} for instruction on how to use this library
 module FirePoll
   # @param [String] msg a custom message raised when polling fails
   # @param [Numeric] seconds number of seconds to poll

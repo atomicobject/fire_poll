@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "fire_poll"
   s.version     = FirePoll::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Matt Fletcher", "David Crosby"]
-  s.email       = ["fletcher@atomicobject.com", "crosby@atomicobject.com"]
+  s.authors     = ["Matt Fletcher", "David Crosby", "Micah Alles"]
+  s.email       = ["fletcher@atomicobject.com", "crosby@atomicobject.com", "alles@atomicobject.com"]
   s.homepage    = ""
   s.summary     = %q{Simple, brute-force method for knowing when something is ready}
   s.description = %q{Simple, brute-force method for knowing when something is ready}
