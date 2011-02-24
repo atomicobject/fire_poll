@@ -1,6 +1,6 @@
 Description
------------
-`FirePoll.poll` is a method for knowing when something is ready.
+===========
+`FirePoll.poll` is a method for knowing when something is ready. When your block yields true, execution continues. When your block yields false, poll keeps trying until it gives up and raises an error.
 
 Examples
 --------
@@ -69,7 +69,7 @@ TODO
 * Nice to have: pass options as a hash instead of two parameters. This will look nice with Ruby 1.9's hash syntax.
 
 Authors
--------
+=======
 * Matt Fletcher (fletcher@atomicobject.com)
 * David Crosby (crosby@atomicobject.com)
 * Micah Alles (alles@atomicobject.com)
