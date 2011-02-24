@@ -6,7 +6,7 @@ module FirePoll
   # @yieldreturn false if polling should continue
   # @yieldreturn true if polling is complete
   # @raise [RuntimeError] when polling fails
-  # @return [NilClass]
+  # @return [void]
   # @since 1.0.0
   def poll(msg=nil, seconds=2.0) 
     (seconds * 10).to_i.times do 
@@ -15,7 +15,6 @@ module FirePoll
     end
     msg ||= "polling failed after #{seconds} seconds" 
     raise msg
-    nil
   end
 
   module_function :poll

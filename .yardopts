@@ -1,1 +1,1 @@
---markup markdown --readme README.md
+--markup markdown --readme README.md --hide-void-return
