@@ -54,6 +54,11 @@ class FirePollTest < Test::Unit::TestCase
     end
     flunk "should have raised"
   end
+
+  def test_the_result_of_the_block_is_returned
+    result = FirePoll.poll { "this is the result of the block" }
+    assert_equal "this is the result of the block", result
+  end
 end
 
 class TestFirePollMixin < Test::Unit::TestCase

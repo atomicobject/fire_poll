@@ -6,11 +6,12 @@ module FirePoll
   # @yieldreturn false if polling should continue
   # @yieldreturn true if polling is complete
   # @raise [RuntimeError] when polling fails
-  # @return [void]
+  # @return the return value of the passed block
   # @since 1.0.0
   def poll(msg=nil, seconds=2.0) 
     (seconds * 10).to_i.times do 
-      return if yield
+      result = yield
+      return result if result
       sleep 0.1
     end
     msg ||= "polling failed after #{seconds} seconds" 

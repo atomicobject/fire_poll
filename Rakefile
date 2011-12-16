@@ -1,4 +1,4 @@
-require "bundler"
+require "bundler/setup"
 require "rake/testtask"
 require "rake/clean"
 require "yard"
