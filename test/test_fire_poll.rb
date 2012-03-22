@@ -59,5 +59,22 @@ class FirePollTest < Test::Unit::TestCase
     result = FirePoll.poll { "this is the result of the block" }
     assert_equal "this is the result of the block", result
   end
+
+  def test_should_pay_attention_to_actual_time_elapsed_when_deciding_whether_to_continue_polling
+    start = Time.now
+    call_count = 0
+    begin
+      # If something inside the block consumes significant time, don't get caught in a repeater 
+      FirePoll.poll("woops", 0.5) do 
+        call_count += 1
+        sleep 0.35 # more than half
+        false
+      end
+      raise "Didn't expect #poll to return! call_count=#{call_count}"
+    rescue => e
+      assert_equal "woops", e.message
+      assert_equal 2, call_count, "Delaying should have cut the iterations down to 2"
+    end
+  end
 end
 
