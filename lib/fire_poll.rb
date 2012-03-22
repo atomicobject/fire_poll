@@ -19,4 +19,32 @@ module FirePoll
   end
 
   module_function :poll
+
+  #
+  # Runs a block of code and returns the value.
+  # IF ANYTHING raises in the block due to test failure or error,
+  # the exception will be held, a small delay, then re-try the block.
+  # This patience endures for 5 seconds by default, before the most
+  # recent reason for failure gets re-raised.
+  #
+  def patiently(time=nil,&block)
+    time ||= 5                   # 5 seconds overall patience
+    give_up_at = Time.now + time # pick a time to stop being patient
+    delay = 0.1                  # wait a tenth of a second before re-attempting
+    failure = nil                # record the most recent failure
+
+    while Time.now < give_up_at do
+      begin
+        return block.call
+      rescue Exception => e
+        failure = e
+        sleep delay              # avoid spinning like crazy
+      end
+    end
+    
+    if failure
+      raise failure # if we never got satisfaction, tell the world
+    end
+  end
+  module_function :patiently
 end
