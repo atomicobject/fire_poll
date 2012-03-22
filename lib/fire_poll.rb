@@ -27,15 +27,21 @@ module FirePoll
   # This patience endures for 5 seconds by default, before the most
   # recent reason for failure gets re-raised.
   #
-  def patiently(time=nil,&block)
+  # @param [Numeric] time Wall-clock number of seconds to be patient, default is 5 seconds
+  # @param [Numeric] delay Seconds to hesitate after encountering a failure, default is 0.1 seconds 
+  # @raise [Exception] the most recent Exception that caused the loop to retry before giving up.
+  # @return the value of the passed block
+  # @since 1.2.0
+  #
+  def patiently(time=nil, delay=nil)
     time ||= 5                   # 5 seconds overall patience
     give_up_at = Time.now + time # pick a time to stop being patient
-    delay = 0.1                  # wait a tenth of a second before re-attempting
+    delay ||= 0.1                  # wait a tenth of a second before re-attempting
     failure = nil                # record the most recent failure
 
     while Time.now < give_up_at do
       begin
-        return block.call
+        return yield
       rescue Exception => e
         failure = e
         sleep delay              # avoid spinning like crazy
