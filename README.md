@@ -40,15 +40,15 @@ Example: patiently
 I'm writing tests for my web app which uses a bunch of crazy Ajax to fetch data from a service and populate a table... one row at a time.
 In real life it takes just a moment to complete, but sometimes one or two of the rows hangs for a second before continuing.
 
-  it "loads the tasks asynchronously and fills the table" do
-    go_to_task_list_page
+    it "loads the tasks asynchronously and fills the table" do
+      go_to_task_list_page
 
-    patiently do
-      read_task_table_row(1).should == [ "Ride bike", "Done" ]
-      read_task_table_row(2).should == [ "Write code", "Done" ]
-      read_task_table_row(3).should == [ "Go to The Meanwhile", "Todo" ]
+      patiently do
+        read_task_table_row(1).should == [ "Ride bike", "Done" ]
+        read_task_table_row(2).should == [ "Write code", "Done" ]
+        read_task_table_row(3).should == [ "Go to The Meanwhile", "Todo" ]
+      end
     end
-  end
 
 This test clearly shows what you're interested in, without getting tripped up by delayed Ajax results, but without adding unneeded synchronization or sleep code.
 
@@ -69,6 +69,15 @@ The `FirePoll` module may be mixed into your class via `include` for nicer readi
     FirePoll.poll { ... } # returns immedialtely if no errors, or as soon as errors stop
     FirePoll.poll(10) { ... } # increase patience to 10 seconds
     FirePoll.poll(20, 3) { ... } # increase patience to 20 seconds, and delay for 3 seconds before retry
+
+RSpec
+-----
+We tend to include the FirePoll module up-front for all our specs:
+
+    RSpec.configure do |config|
+      config.include FirePoll
+      ...
+    end
 
 Implementation
 --------------

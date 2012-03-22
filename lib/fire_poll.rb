@@ -32,7 +32,7 @@ module FirePoll
   # This patience endures for 5 seconds by default, before the most
   # recent reason for failure gets re-raised.
   #
-  # @param [Numeric] time Wall-clock number of seconds to be patient, default is 5 seconds
+  # @param [Numeric] seconds Wall-clock number of seconds to be patient, default is 5 seconds
   # @param [Numeric] delay Seconds to hesitate after encountering a failure, default is 0.1 seconds 
   # @yield a block that will be run, and if it raises an error, re-run until success, or patience runs out
   # @raise [Exception] the most recent Exception that caused the loop to retry before giving up.
