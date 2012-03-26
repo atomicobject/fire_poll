@@ -66,7 +66,7 @@ class PatientlyTest < Test::Unit::TestCase
     rescue 
       span = Time.now-start
       diff = (5 - span).abs
-      assert diff < 0.05, "Expected about 5 seconds to pass before giving up, got #{span} (diff of #{diff})"
+      assert diff < 0.5, "Expected about 5 seconds to pass before giving up, got #{span} (diff of #{diff})"
     end
   end
 
